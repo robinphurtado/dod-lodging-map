@@ -1,0 +1,52 @@
+.title {
+    display: none;
+  }
+  
+  @media (min-width: 600px) {
+    .title {
+      display: block;
+    }
+  }
+  
+  .search {
+    position: relative;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  .search:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .searchIcon {
+    padding: 0 16px;
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .inputRoot {
+    color: inherit;
+  }
+  
+  .inputInput {
+    padding: 8px;
+    padding-left: calc(1em + 16px);
+    transition: width 200ms ease-in-out;
+    width: 100%;
+  }
+  
+  @media (min-width: 960px) {
+    .inputInput {
+      width: 20ch;
+    }
+  }
+  
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
