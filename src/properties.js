@@ -2708,6 +2708,20 @@ const properties = [
     name: "Marine Lodge Quantico Liversedge Hall",
     proptype: "marine lodge",
   },
+  {
+    lat: 46.12262059120913,
+    lon: -123.93396938336646,
+    link: "https://www.oregon.gov/omd/bservice/Pages/Reserve-Lodging-and-RV-Spaces.aspx",
+    name: "Camp Rilea",
+    proptype: "Army Vacation Rental",
+  },
+  {
+    lat: 46.12024783608596,
+    lon: -123.93651908489618,
+    link: "https://www.oregon.gov/omd/bservice/Pages/Reserve-Lodging-and-RV-Spaces.aspx",
+    name: " Camp Rilea ",
+    proptype: "Army RV",
+  },
 ];
 
 export default properties;
