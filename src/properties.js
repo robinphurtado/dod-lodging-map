@@ -714,8 +714,8 @@ const properties = [
     proptype: "coast guard rec",
   },
   {
-    lat: 47.5906,
-    lon: -122.3377317,
+    lat: 46.88901,
+    lon: -124.11717,
     link: "https://www.coastguardmwr.org/_files/ugd/458cd4_eabec1aa2fd24fc2b7f438c25e40bba1.pdf",
     name: "Westport Lighthouse Campground and RV Park",
     proptype: "coast guard rec",
