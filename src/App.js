@@ -5,8 +5,22 @@ import { /*CssBaseline,*/ Grid, TextField, Typography } from "@mui/material";
 // import Header from "./components/Header/Header";
 // import Footer from "./Footer";
 import properties from "./properties";
-import navyhotel from "./images/nhotelsmall.png";
-import armyhotel from "./images/armyhotel.png";
+import navyhotel from "./images/navyhotelsm.png";
+import navycamp from "./images/navycampsm.png";
+import navyvacay from "./images/navyvacaysm.png";
+import armyhotel from "./images/armyhotelsm.png";
+import armycamp from "./images/armycampsm.png";
+import armyvacay from "./images/armyvacaysm.png";
+import mchotel from "./images/mchotelsm.png";
+// import mccamp from "./images/mccampsm.png";
+import mcvacay from "./images/mcvacaysm.png";
+import afhotel from "./images/afhotelsm.png";
+// import afcamp from "./images/afcampsm.png";
+// import afvacay from "./images/afvacaysm.png";
+// import cghotel from "./images/cghotelsm.png";
+import cgcamp from "./images/cgcampsm.png";
+import cgvacay from "./images/cgvacaysm.png";
+import afresort from "./images/resortsm.png";
 
 import {
   Box,
@@ -133,8 +147,38 @@ const App = () => {
             <Marker
               key={index}
               position={{ lat: property.lat, lng: property.lon }}
+              icon={
+                property.proptype === "Navy Hotel"
+                  ? navyhotel
+                  : property.proptype === "Navy RV"
+                  ? navycamp
+                  : property.proptype === "Navy VacationRental"
+                  ? navyvacay
+                  : property.proptype === "Army Hotel"
+                  ? armyhotel
+                  : property.proptype === "IHG Army Hotels"
+                  ? armyhotel
+                  : property.proptype === "Army RV"
+                  ? armycamp
+                  : property.proptype === "Army VacationRental"
+                  ? armyvacay
+                  : property.proptype === "marine lodge"
+                  ? mchotel
+                  : property.proptype === "inns of the corps"
+                  ? mchotel
+                  : property.proptype === "marine getaways"
+                  ? mcvacay
+                  : property.proptype === "Air Force Hotel"
+                  ? afhotel
+                  : property.proptype === "coast guard rec"
+                  ? cgcamp
+                  : property.proptype === "coast guard vacation rental"
+                  ? cgvacay
+                  : property.proptype === "af resort"
+                  ? afresort
+                  : null
+              }
               onClick={() => handleMarkerClick(property)}
-              // icon={property.proptype == "Navy Hotel" ? navyhotel : null}
             />
           ))}
           {selectedMarker && (
