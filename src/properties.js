@@ -539,8 +539,8 @@ const properties = [
     proptype: "IHG Army Hotels",
   },
   {
-    lat: 57.7564,
-    lon: -152.5003774,
+    lat: 57.757,
+    lon: -152.5004,
     link: "http://www.kodiakmwr.com/guest_house.shtml",
     name: "Kodiak Nemetz RV Park",
     proptype: "coast guard rec",
