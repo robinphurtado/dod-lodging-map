@@ -2734,7 +2734,7 @@ const properties = [
     lon: -123.93396938336646,
     link: "https://www.oregon.gov/omd/bservice/Pages/Reserve-Lodging-and-RV-Spaces.aspx",
     name: "Camp Rilea",
-    proptype: "Army Vacation Rental",
+    proptype: "Army VacationRental",
   },
   {
     lat: 46.12024783608596,
