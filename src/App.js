@@ -1,6 +1,6 @@
-import React, { useState, useRef, Component } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
-import { /*CssBaseline,*/ Grid, TextField, Typography } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 
 // import Header from "./components/Header/Header";
 // import Footer from "./Footer";
@@ -56,6 +56,10 @@ const App = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
+
+  useEffect(() => {
+    document.title = "Military Lodging Map";
+  }, []);
 
   const [map, setMap] = useState(/**@type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
