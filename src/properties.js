@@ -1320,7 +1320,7 @@ const properties = [
     lon: 139.582337,
     link: "https://get.dodlodging.net/propertys/Ikego-West-Valley-Campgrounds",
     name: "Ikego West Valley Campgrounds",
-    proptype: "VacationRental",
+    proptype: "Navy VacationRental",
   },
   {
     lat: 35.309924,
