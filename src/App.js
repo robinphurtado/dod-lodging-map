@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { Grid, TextField, Typography } from "@mui/material";
 import Map from "./components/Map/Map";
+import WhyDialog from "./components/WhyDialog";
 
 import {
   Box,
@@ -12,21 +13,9 @@ import {
   Input,
 } from "@mui/material";
 
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  InfoWindow,
-  Autocomplete,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
+import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 
-import {
-  FullscreenExit,
-  DisabledByDefaultTwoTone,
-  EventNote,
-  Label,
-} from "@mui/icons-material";
+import { DisabledByDefaultTwoTone } from "@mui/icons-material";
 import { NearMe } from "@mui/icons-material";
 
 const center = { lat: 39.828175, lng: -98.5795 };
@@ -46,6 +35,7 @@ const App = () => {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [openWhy, setOpenWhy] = useState(false);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
@@ -54,6 +44,14 @@ const App = () => {
 
   const handleMarkerClick = (marker) => {
     setSelectedMarker(marker);
+  };
+
+  const handleClickOpenWhy = () => {
+    setOpenWhy(true);
+  };
+
+  const handleCloseWhy = () => {
+    setOpenWhy(false);
   };
 
   const handleInfoWindowClose = () => {
@@ -129,11 +127,45 @@ const App = () => {
       {/* This Container holds the navigation box */}
 
       {/* playing with a button to move the navigation text to a modal */}
-      {/* <Grid container justifyContent="right">
-        <Button variant="contained" type="submit">
-          Test
-        </Button>
-      </Grid> */}
+      <Grid
+        container
+        justifyContent="flex-end"
+        alignItems="flex-end"
+        position="absolute"
+        top={80}
+        right={40}
+        direction="column"
+        spacing={1}
+      >
+        {/* <Grid item>
+          <Button variant="contained" type="submit">
+            Search
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button variant="contained" type="submit">
+            Legend
+          </Button>
+        </Grid> */}
+      </Grid>
+
+      <Grid
+        container
+        justifyContent="flex-end"
+        alignItems="flex-end"
+        position="absolute"
+        bottom={80}
+        right={60}
+        spacing={1}
+      >
+        <Grid item>
+          <Button variant="contained" onClick={handleClickOpenWhy}>
+            WHY?
+          </Button>
+          <WhyDialog open={openWhy} onClose={handleCloseWhy} />
+        </Grid>
+      </Grid>
+
       {/* end of grid and button I am playing with to convert to modal */}
 
       <Grid container justifyContent="center">
