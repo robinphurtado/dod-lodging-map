@@ -196,7 +196,7 @@ const App = () => {
             <Typography>Duration: {duration} </Typography>
             <IconButton
               aria-label="center back"
-              onClick={() => map.panTo(center)}
+              //onClick={() => map.panTo(center)}
             >
               <NearMe />
             </IconButton>
