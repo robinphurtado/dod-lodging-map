@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Grid, TextField, Typography } from "@mui/material";
 import Map from "./components/Map/Map";
 import WhyDialog from "./components/WhyDialog";
+import LegendDialog from "./components/LegendDialog";
+import Footer from "./components/Footer";
 
 import {
   Box,
@@ -36,6 +38,7 @@ const App = () => {
   const [duration, setDuration] = useState("");
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [openWhy, setOpenWhy] = useState(false);
+  const [openLegend, setOpenLegend] = useState(false);
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef();
@@ -52,6 +55,14 @@ const App = () => {
 
   const handleCloseWhy = () => {
     setOpenWhy(false);
+  };
+
+  const handleClickOpenLegend = () => {
+    setOpenLegend(true);
+  };
+
+  const handleCloseLegend = () => {
+    setOpenLegend(false);
   };
 
   const handleInfoWindowClose = () => {
@@ -141,13 +152,28 @@ const App = () => {
           <Button variant="contained" type="submit">
             Search
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid item>
-          <Button variant="contained" type="submit">
+          <Button variant="contained" onClick={handleClickOpenLegend}>
             Legend
           </Button>
-        </Grid> */}
+          <LegendDialog open={openLegend} onClose={handleCloseLegend} />
+        </Grid>
       </Grid>
+
+      {/* <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        position="absolute"
+        bottom={40}
+        // right={60}
+        spacing={1}
+      >
+        <Grid item> */}
+      <Footer />
+      {/* </Grid>
+      </Grid> */}
 
       <Grid
         container
