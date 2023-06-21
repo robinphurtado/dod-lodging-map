@@ -115,7 +115,7 @@ export default function LegendDialog({ open, onClose }) {
         >
             <Grid item>
                 <img src={resortsm} width={50} height={50} alt='Navy Blue' />
-                <Typography variant="caption">Resort</Typography>       
+                <Typography variant="caption">Armed Forces Resort</Typography>       
             </Grid>         
         </Grid>
         

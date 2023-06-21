@@ -10,7 +10,7 @@ import armyhotel from "../../images/armyhotelsm.png";
 import armycamp from "../../images/armycampsm.png";
 import armyvacay from "../../images/armyvacaysm.png";
 import mchotel from "../../images/mchotelsm.png";
-// import mccamp from "../../images/mccampsm.png";
+import mccamp from "../../images/mccampsm.png";
 import mcvacay from "../../images/mcvacaysm.png";
 import afhotel from "../../images/afhotelsm.png";
 // import afcamp from "../../images/afcampsm.png";
@@ -42,6 +42,8 @@ const getMarkerIcon = (property) => {
         return mchotel;
       case "marine getaways":
         return mcvacay;
+      case "marine camp":
+        return mccamp;
       case "Air Force Hotel":
         return afhotel;
       case "coast guard rec":
