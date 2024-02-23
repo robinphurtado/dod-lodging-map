@@ -1,4 +1,38 @@
-# Getting Started with Create React App
+# Military Lodging App
+
+This app maps military lodging locations worldwide.
+
+### Description
+
+This application uses Google Maps integration to map and allow navigation to military lodging locations worldwide.  
+
+I developed this app as a culmination project for my internship with GlobalInfoTek Inc through Hiring Our Heroes. 
+
+During my time at GlobalInfoTek, I was working with their Senior Software Developer and learning mainly Front-End Design.  This project showcases the technologies I practiced during the internship as well as a few that I needed to learn 
+in order to execute the vision I had for the App.
+
+Previous skills that I was able to practice during the internship:
+*HTML
+*CSS
+*Adobe Illustrator
+New skills that I learned during the internship:
+*JavaScript
+*React
+*Working with Bootstrap library
+*Node.js
+*REST API integration
+Additional skills I learned during the execution of this project
+*Web Scraping using Selenium
+*Data manipulation and cleaning in python
+*Integrating React-Google-Maps API and Material UI Library 
+
+I have wanted a map with military lodging locations to assist with trip planning for some time.  After learning React and playing with mapping integration and APIs in smaller projects I completed for my internship, I decided I wanted to create
+that map for my final project.  I used React to showcase that new skill.  I chose the React-Google-Maps API because it was similar to a Google Map API I had used in the smaller project, but had additional capabilities that allowed for point to point
+navigation. While gathering requirements and planning the project, I identified eleven different types of military properties spread over approximatley ten different websites.  
+   
+    Why you used the technologies you used,
+    Some of the challenges you faced and features you hope to implement in the future.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
