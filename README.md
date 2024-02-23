@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+This app maps military lodging locations worldwide.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
 
-## Available Scripts
+This application uses Google Maps integration to map and allow navigation to military lodging locations worldwide.  
 
-In the project directory, you can run:
+I developed this app as a culmination project for my internship with GlobalInfoTek Inc through Hiring Our Heroes. 
 
-### `npm start`
+During my time at GlobalInfoTek, I was working with their Senior Software Developer and learning mainly Front-End Design.  This project showcases the technologies I practiced during the internship as well as a few that I needed to learn 
+in order to execute the vision I had for the App.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Previous skills and tools that I was able to practice during the internship:
+*HTML
+*CSS
+*Adobe Illustrator
+*MySQL
+New skills that I learned during the internship:
+*JavaScript
+*React
+*Working with Bootstrap library
+*Node.js
+*REST API integration
+Additional skills I learned during the execution of this project
+*Web Scraping using Selenium
+*Data manipulation and cleaning in python
+*Integrating React-Google-Maps API and Material UI Library 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I have wanted a map with military lodging locations to assist with trip planning for some time.  After learning React and playing with mapping integration and APIs in smaller projects I completed for my internship, I decided I wanted to create
+that map for my final project.  I used React to showcase that new skill.  I chose the React-Google-Maps API because it was similar to a Google Map API I had used in the smaller project, but had additional capabilities that allowed for point to point
+navigation. While gathering requirements and planning the project, I identified eleven different types of military properties spread over approximatley ten different websites.  I was able to inspect the packet and save the JSON file for one website that
+contained a large number of properties, but for the majority of the rest I had to find another solution.  My internship mentor pointed me to Selenium.  I learned to use the Selenium Web Driver in Python to scrape the data.  I then used pandas and MySQL to convert, normalize, and organize that data I had gathered. I then built the site using React, and HTML, as well as Material UI elements for styling.  
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Along the way I faced challenges with learning several tools "on the fly" to implement the features I needed.  I have since learned so much more about web design and accessibility, that I plan to revisit this project for my degree Capstone Project and re-design it from start to finish following best practices.  I also plan to implement a back end to allow querying and customized display of properties on the map.
+    
