@@ -25,5 +25,5 @@ in order to execute the vision I had for the App.
 - Data manipulation and cleaning in python
 - Integrating React-Google-Maps API and Material UI Library  
 
-*Along the way I faced challenges with learning several tools "on the fly" to implement the features I needed.  While completed my degree, I have learned so much more about web design and accessibility.  I plan to revisit this project after my degree Capstone Project and re-design it from start to finish following best practices.  I also plan to implement a back end to allow querying and customized display of properties on the map.*
+*Along the way I faced challenges with learning several tools "on the fly" to implement the features I needed.  While completing my degree, I have learned so much more about web design and accessibility.  I plan to revisit this project after my degree Capstone Project and re-design it from start to finish following best practices.  I also plan to implement a back end to allow querying and customized display of properties on the map.*
     
