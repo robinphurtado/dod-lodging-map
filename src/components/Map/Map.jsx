@@ -2,7 +2,10 @@ import React from "react";
 import {GoogleMap, Marker, InfoWindow, DirectionsRenderer} from "@react-google-maps/api";
 import properties from "../../properties";
 import { Typography } from "@mui/material";
-
+import {
+  Box,
+  Button
+} from "@mui/material";
 import navyhotel from "../../images/navyhotelsm.png";
 import navycamp from "../../images/navycampsm.png";
 import navyvacay from "../../images/navyvacaysm.png";
@@ -57,14 +60,38 @@ const getMarkerIcon = (property) => {
     }
   };
 
+  //v2 v
+const mapOptions = {
+  disableDefaultUI: false,
+  zoomControl: true,
+  mapTypeControl: false,
+  streetViewControl: false,
+  fullscreenControl: true,
+  styles: [
+    {
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+    {
+      featureType: "transit",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+  ],
+};
+//v2 ^
+
 const Map = ({ center, selectedMarker, handleMarkerClick, handleInfoWindowClose, directionsResponse }) => {
     return(
-
+        // v1 v
         <GoogleMap
         center={center}
         zoom={5}
         mapContainerStyle={{ width: "100vw", height: "100vh" }}
-        >
+        options={mapOptions}  //from v2
+        >    
+        
             {properties.map((property, index) => (
             <Marker
                 key={index}
@@ -74,23 +101,49 @@ const Map = ({ center, selectedMarker, handleMarkerClick, handleInfoWindowClose,
             />
             ))}
             {selectedMarker && (
-            <InfoWindow
+              <InfoWindow
                 position={{ lat: selectedMarker.lat, lng: selectedMarker.lon }}
                 onCloseClick={handleInfoWindowClose}
-            >
-                <div>
-                <Typography variant="subtitle1">
+              >
+                <Box sx={{ maxWidth: 260, p: 1 }}>
+                  <Typography variant="subtitle1" fontWeight={800}>
                     {selectedMarker.name}
-                </Typography>
-                <a
-                    href={selectedMarker.link}
+                  </Typography>
+
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                    {selectedMarker.proptype}
+                  </Typography>
+
+                  <Button
+                    href={selectedMarker.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                >
+                    size="small"
+                    variant="contained"
+                    fullWidth
+                  >
                     Visit Website
-                </a>
-                </div>
-            </InfoWindow>
+                  </Button>
+                </Box>
+              </InfoWindow>
+            // <InfoWindow  v1 
+            //     position={{ lat: selectedMarker.lat, lng: selectedMarker.lon }}
+            //     onCloseClick={handleInfoWindowClose}
+            // >
+            //     <div>
+            //     <Typography variant="subtitle1">
+            //         {selectedMarker.name}
+            //     </Typography>
+            //     <a
+            //         href={selectedMarker.link}
+            //         target="_blank"
+            //         rel="noopener noreferrer"
+            //     >
+            //         Visit Website
+            //     </a>
+            //     </div>
+            // </InfoWindow> v1 
+            
             )}
             {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />

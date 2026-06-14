@@ -121,7 +121,7 @@ export default function LegendDialog({ open, onClose }) {
         
       
         {/* <Typography variant = "h6" >
-          Why?
+          About
         </Typography> */}
         {/* <Typography gutterBottom>          
           I created this site as my final project for my Fellowship with Global InfoTek through Hiring Our Heroes. 
