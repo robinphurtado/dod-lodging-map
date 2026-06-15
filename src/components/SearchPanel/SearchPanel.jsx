@@ -1,5 +1,3 @@
-// src/components/SearchPanel/SearchPanel.jsx
-
 import {
   Box,
   Button,
@@ -15,6 +13,7 @@ import NearMeIcon from "@mui/icons-material/NearMe";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import HotelIcon from "@mui/icons-material/Hotel";
 import { Autocomplete } from "@react-google-maps/api";
 
 export default function SearchPanel({
@@ -35,22 +34,41 @@ export default function SearchPanel({
         top: { xs: 16, md: 24 },
         left: { xs: 16, md: 24 },
         right: { xs: 16, md: "auto" },
-        width: { xs: "auto", md: 380 },
+        width: { xs: "auto", sm: 390 },
+        maxWidth: "calc(100vw - 32px)",
         borderRadius: 4,
         zIndex: 10,
+        backgroundColor: "rgba(255,255,255,0.96)",
         backdropFilter: "blur(10px)",
       }}
     >
-      <CardContent>
+      <CardContent sx={{ p: 3 }}>
         <Stack spacing={2}>
-          <Box>
-            <Typography variant="h5" fontWeight={800}>
-              Military Lodging Map
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Find military lodging, RV sites, vacation rentals, and resorts.
-            </Typography>
-          </Box>
+          <Stack direction="row" spacing={1.5} alignItems="center">
+            <Box
+              sx={{
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                bgcolor: "primary.main",
+                color: "white",
+                display: "grid",
+                placeItems: "center",
+                flexShrink: 0,
+              }}
+            >
+              <HotelIcon />
+            </Box>
+
+            <Box>
+              <Typography variant="h5" fontWeight={800} lineHeight={1.1}>
+                Military Lodging Map
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                Find military lodging, RV sites, vacation rentals, and resorts.
+              </Typography>
+            </Box>
+          </Stack>
 
           <Divider />
 
@@ -80,6 +98,7 @@ export default function SearchPanel({
               startIcon={<NearMeIcon />}
               onClick={calculateRoute}
               fullWidth
+              sx={{ py: 1.1 }}
             >
               Route
             </Button>
@@ -88,17 +107,20 @@ export default function SearchPanel({
               variant="outlined"
               startIcon={<RestartAltIcon />}
               onClick={clearRoute}
+              sx={{ px: 2.5 }}
             >
               Clear
             </Button>
           </Stack>
 
           {(distance || duration) && (
-            <Stack direction="row" spacing={1}>
-              <Chip label={`Distance: ${distance}`} />
-              <Chip label={`Time: ${duration}`} />
+            <Stack direction="row" spacing={1} flexWrap="wrap">
+              {distance && <Chip label={`Distance: ${distance}`} />}
+              {duration && <Chip label={`Time: ${duration}`} />}
             </Stack>
           )}
+
+          <Divider />
 
           <Stack direction="row" spacing={1}>
             <Button

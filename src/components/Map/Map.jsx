@@ -115,7 +115,7 @@ const Map = ({ center, selectedMarker, handleMarkerClick, handleInfoWindowClose,
                   </Typography>
 
                   <Button
-                    href={selectedMarker.url}
+                    href={selectedMarker.url || selectedMarker.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     size="small"
