@@ -58,9 +58,15 @@ const App = () => {
     const origin = originRef.current?.value;
     const destination = destinationRef.current?.value;
 
+    console.log("Origin:", origin);
+    console.log("Destination:", destination);
+
     if (!origin || !destination) {
+      console.log("Missing origin or destination");
       return;
     }
+    
+    try{
 
     const directionsService = new window.google.maps.DirectionsService();
 
@@ -70,9 +76,14 @@ const App = () => {
       travelMode: window.google.maps.TravelMode.DRIVING,
     });
 
+    console.log("Directions results:", results);
+
     setDirectionsResponse(results);
     setDistance(results.routes[0].legs[0].distance.text);
     setDuration(results.routes[0].legs[0].duration.text);
+    } catch(error) {
+      console.error("Route calculation failed: ", error);
+    }
   }
 
   function clearRoute() {
