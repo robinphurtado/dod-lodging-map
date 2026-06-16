@@ -22,6 +22,26 @@ const mapOptions = {
       featureType: "transit",
       elementType: "labels",
       stylers: [{ visibility: "off" }],
+
+      featureType: "landscape",
+      elementType: "geometry",
+      stylers: [{ color: "#f3efe7" }],
+    },
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [{ color: "#b7d7e8" }],
+    },
+    {
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [{ color: "#ffffff" }],
+    },
+    {
+      featureType: "administrative",
+      elementType: "geometry",
+      stylers: [{ color: "#c8c2b5" }],
+
     },
   ],
 };
