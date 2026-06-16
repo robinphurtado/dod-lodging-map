@@ -25,7 +25,22 @@ export default function SearchPanel({
   duration,
   onOpenLegend,
   onOpenAbout,
+  selectedBranches,
+  selectedPropertyTypes,
+  onToggleBranch,
+  onTogglePropertyType,
 }) {
+
+const BRANCHES = ["Navy", "Army", "Marines", "Air Force", "Coast Guard"];
+
+const PROPERTY_TYPES = [
+  "Hotel",
+  "RV",
+  "Campground",
+  "Vacation Rental",
+  "Resort",
+];
+
   return (
     <Card
       elevation={8}
@@ -119,6 +134,56 @@ export default function SearchPanel({
               {duration && <Chip label={`Time: ${duration}`} />}
             </Stack>
           )}
+
+          <Divider />
+
+
+
+          <Box>
+            <Typography variant="subtitle2" fontWeight={800} sx={{ mb: 1 }}>
+              Filters
+            </Typography>
+
+            <Typography variant="caption" color="text.secondary">
+              Branch
+            </Typography>
+
+            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 1 }}>
+              {BRANCHES.map((branch) => (
+                <Chip
+                  key={branch}
+                  label={branch}
+                  clickable
+                  color={selectedBranches.includes(branch) ? "primary" : "default"}
+                  variant={selectedBranches.includes(branch) ? "filled" : "outlined"}
+                  onClick={() => onToggleBranch(branch)}
+                />
+              ))}
+            </Stack>
+
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              sx={{ display: "block", mt: 2 }}
+            >
+              Property Type
+            </Typography>
+
+            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 1 }}>
+              {PROPERTY_TYPES.map((type) => (
+                <Chip
+                  key={type}
+                  label={type}
+                  clickable
+                  color={selectedPropertyTypes.includes(type) ? "secondary" : "default"}
+                  variant={selectedPropertyTypes.includes(type) ? "filled" : "outlined"}
+                  onClick={() => onTogglePropertyType(type)}
+                />
+              ))}
+            </Stack>
+          </Box>
+
+
 
           <Divider />
 

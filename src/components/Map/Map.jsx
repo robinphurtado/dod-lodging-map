@@ -52,7 +52,60 @@ const mapContainerStyle = {
   height: "100%",
 };
 
-const Map = ({ center, selectedMarker, handleMarkerClick, handleInfoWindowClose, directionsResponse }) => {
+function getBranchFromProptype(proptype = "") {
+  if (proptype.includes("Navy")) return "Navy";
+  if (proptype.includes("Army") || proptype.includes("IHG Army")) return "Army";
+  if (proptype.includes("marine") || proptype.includes("corps")) return "Marines";
+  if (proptype.includes("Air Force") || proptype.includes("af resort")) {
+    return "Air Force";
+  }
+  if (proptype.includes("coast guard")) return "Coast Guard";
+
+  return "Other";
+}
+
+function getPropertyTypeFromProptype(proptype = "") {
+  if (proptype.includes("RV")) return "RV";
+  if (proptype.includes("camp") || proptype.includes("rec")) return "Campground";
+  if (proptype.includes("VacationRental") || proptype.includes("vacation rental")) {
+    return "Vacation Rental";
+  }
+  if (proptype.includes("resort")) return "Resort";
+  if (
+    proptype.includes("Hotel") ||
+    proptype.includes("lodge") ||
+    proptype.includes("inns of the corps")
+  ) {
+    return "Hotel";
+  }
+
+  return "Other";
+}
+
+const Map = ({ 
+  center, 
+  selectedMarker, 
+  handleMarkerClick, 
+  handleInfoWindowClose, 
+  directionsResponse,
+  selectedBranches,
+  selectedPropertyTypes,
+}) => {
+
+  const filteredProperties = properties.filter((property) => {
+  const branch = getBranchFromProptype(property.proptype);
+  const propertyType = getPropertyTypeFromProptype(property.proptype);
+
+  const matchesBranch =
+    selectedBranches.length === 0 || selectedBranches.includes(branch);
+
+  const matchesPropertyType =
+    selectedPropertyTypes.length === 0 ||
+    selectedPropertyTypes.includes(propertyType);
+
+  return matchesBranch && matchesPropertyType;
+});
+
     return(
         // v1 v
         <GoogleMap
@@ -62,7 +115,7 @@ const Map = ({ center, selectedMarker, handleMarkerClick, handleInfoWindowClose,
         options={mapOptions}  //from v2
         >    
         
-            {properties.map((property, index) => (
+            {filteredProperties.map((property, index) => (
             <Marker
                 //key={index}// v1
                 key={`$${property.name}-${index}`}

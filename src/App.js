@@ -26,6 +26,8 @@ const App = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
   const [openWhy, setOpenWhy] = useState(false);
   const [openLegend, setOpenLegend] = useState(false);
+  const [selectedBranches, setSelectedBranches] = useState([]);
+  const [selectedPropertyTypes, setSelectedPropertyTypes] = useState([]);
 
   const originRef = useRef(null);
   const destinationRef = useRef(null);
@@ -100,6 +102,14 @@ const App = () => {
     }
   }
 
+  function toggleFilter(value, selectedValues, setSelectedValues) {
+    setSelectedValues((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  }
+
   if (!isLoaded) {
     return <Box sx={{ p: 3 }}>Loading...</Box>;
   }
@@ -119,6 +129,8 @@ const App = () => {
         handleMarkerClick={handleMarkerClick}
         handleInfoWindowClose={handleInfoWindowClose}
         directionsResponse={directionsResponse}
+        selectedBranches={selectedBranches}
+        selectedPropertyTypes={selectedPropertyTypes}
       />
 
       <SearchPanel
@@ -130,6 +142,14 @@ const App = () => {
         duration={duration}
         onOpenLegend={handleOpenLegend}
         onOpenAbout={handleOpenWhy}
+        selectedBranches={selectedBranches}
+        selectedPropertyTypes={selectedPropertyTypes}
+        onToggleBranch={(branch) =>
+          toggleFilter(branch, selectedBranches, setSelectedBranches)
+        }
+        onTogglePropertyType={(type) =>
+          toggleFilter(type, selectedPropertyTypes, setSelectedPropertyTypes)
+        }
       />
 
       <LegendDialog open={openLegend} onClose={handleCloseLegend} />
