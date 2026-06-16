@@ -22,7 +22,8 @@ const mapOptions = {
       featureType: "transit",
       elementType: "labels",
       stylers: [{ visibility: "off" }],
-
+    },
+    {
       featureType: "landscape",
       elementType: "geometry",
       stylers: [{ color: "#f3efe7" }],
@@ -41,7 +42,6 @@ const mapOptions = {
       featureType: "administrative",
       elementType: "geometry",
       stylers: [{ color: "#c8c2b5" }],
-
     },
   ],
 };
@@ -88,8 +88,8 @@ const Map = ({
   handleMarkerClick, 
   handleInfoWindowClose, 
   directionsResponse,
-  selectedBranches,
-  selectedPropertyTypes,
+  selectedBranches = [],
+  selectedPropertyTypes = [],
 }) => {
 
   const filteredProperties = properties.filter((property) => {
@@ -118,7 +118,7 @@ const Map = ({
             {filteredProperties.map((property, index) => (
             <Marker
                 //key={index}// v1
-                key={`$${property.name}-${index}`}
+                key={`${property.name}-${index}`}
                 position={{ lat: property.lat, lng: property.lon }}
                 icon={getMarkerIcon(property)}
                 onClick={() => handleMarkerClick(property)}
