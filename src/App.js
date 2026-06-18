@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { Box, IconButton, Tooltip } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import CloseIcon from "@mui/icons-material/Close";
 import { useJsApiLoader } from "@react-google-maps/api";
 
 import Map from "./components/Map/Map";

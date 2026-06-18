@@ -59,7 +59,7 @@ const PROPERTY_TYPES = [
         maxHeight: { xs: "70vh", md: "none" },
         overflowY: { xs: "auto", md: "visible" },
 
-        borderRadius: { xs: 4, md: 3 },
+        borderRadius: { xs: 1, md: 1 },
         zIndex: 10,
         backgroundColor: "rgba(255,255,255,0.96)",
         backdropFilter: "blur(10px)",
