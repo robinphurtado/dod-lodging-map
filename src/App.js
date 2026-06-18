@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { Box } from "@mui/material";
+import { Box, IconButton, Tooltip } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
 import { useJsApiLoader } from "@react-google-maps/api";
 
 import Map from "./components/Map/Map";
@@ -28,6 +30,7 @@ const App = () => {
   const [openLegend, setOpenLegend] = useState(false);
   const [selectedBranches, setSelectedBranches] = useState([]);
   const [selectedPropertyTypes, setSelectedPropertyTypes] = useState([]);
+  const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(true);
 
   const originRef = useRef(null);
   const destinationRef = useRef(null);
@@ -55,6 +58,10 @@ const App = () => {
   const handleCloseLegend = () => {
     setOpenLegend(false);
   };
+
+  const toggleSearchPanel = () => {
+  setIsSearchPanelOpen((prev) => !prev);
+};
 
   async function calculateRoute() {
     const origin = originRef.current?.value;
@@ -133,24 +140,50 @@ const App = () => {
         selectedPropertyTypes={selectedPropertyTypes}
       />
 
-      <SearchPanel
-        originRef={originRef}
-        destinationRef={destinationRef}
-        calculateRoute={calculateRoute}
-        clearRoute={clearRoute}
-        distance={distance}
-        duration={duration}
-        onOpenLegend={handleOpenLegend}
-        onOpenAbout={handleOpenWhy}
-        selectedBranches={selectedBranches}
-        selectedPropertyTypes={selectedPropertyTypes}
-        onToggleBranch={(branch) =>
-          toggleFilter(branch, selectedBranches, setSelectedBranches)
-        }
-        onTogglePropertyType={(type) =>
-          toggleFilter(type, selectedPropertyTypes, setSelectedPropertyTypes)
-        }
-      />
+      {isSearchPanelOpen && (
+        <SearchPanel
+          originRef={originRef}
+          destinationRef={destinationRef}
+          calculateRoute={calculateRoute}
+          clearRoute={clearRoute}
+          distance={distance}
+          duration={duration}
+          onOpenLegend={handleOpenLegend}
+          onOpenAbout={handleOpenWhy}
+          selectedBranches={selectedBranches}
+          selectedPropertyTypes={selectedPropertyTypes}
+          onToggleBranch={(branch) =>
+            toggleFilter(branch, selectedBranches, setSelectedBranches)
+          }
+          onTogglePropertyType={(type) =>
+            toggleFilter(type, selectedPropertyTypes, setSelectedPropertyTypes)
+          }
+          onClose={toggleSearchPanel}
+        />
+      )}
+
+      {!isSearchPanelOpen && (
+        <Tooltip title="Open search panel">
+          <IconButton
+            onClick={toggleSearchPanel}
+            sx={{
+              position: "absolute",
+              top: { xs: 16, md: 24 },
+              left: { xs: 16, md: 24 },
+              zIndex: 11,
+              bgcolor: "background.paper",
+              color: "primary.main",
+              boxShadow: 4,
+              "&:hover": {
+                bgcolor: "background.paper",
+              },
+            }}
+            aria-label="Open search panel"
+          >
+            <SearchIcon />
+          </IconButton>
+        </Tooltip>
+        )}
 
       <LegendDialog open={openLegend} onClose={handleCloseLegend} />
 

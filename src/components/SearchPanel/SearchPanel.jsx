@@ -14,6 +14,8 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import HotelIcon from "@mui/icons-material/Hotel";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import { Autocomplete } from "@react-google-maps/api";
 
 export default function SearchPanel({
@@ -29,6 +31,7 @@ export default function SearchPanel({
   selectedPropertyTypes,
   onToggleBranch,
   onTogglePropertyType,
+  onClose,
 }) {
 
 const BRANCHES = ["Navy", "Army", "Marines", "Air Force", "Coast Guard"];
@@ -49,17 +52,22 @@ const PROPERTY_TYPES = [
         top: { xs: 16, md: 24 },
         left: { xs: 16, md: 24 },
         right: { xs: 16, md: "auto" },
+
         width: { xs: "auto", sm: 390 },
         maxWidth: "calc(100vw - 32px)",
-        borderRadius: 4,
+
+        maxHeight: { xs: "70vh", md: "none" },
+        overflowY: { xs: "auto", md: "visible" },
+
+        borderRadius: { xs: 4, md: 3 },
         zIndex: 10,
         backgroundColor: "rgba(255,255,255,0.96)",
         backdropFilter: "blur(10px)",
       }}
     >
-      <CardContent sx={{ p: 3 }}>
+      <CardContent sx={{ p: { xs: 2, md: 3 } }}>
         <Stack spacing={2}>
-          <Stack direction="row" spacing={1.5} alignItems="center">
+          <Stack direction="row" spacing={1.5} alignItems="flex-start">
             <Box
               sx={{
                 width: 46,
@@ -75,7 +83,7 @@ const PROPERTY_TYPES = [
               <HotelIcon />
             </Box>
 
-            <Box>
+            <Box sx={{ flex: 1 }}>
               <Typography variant="h5" fontWeight={800} lineHeight={1.1}>
                 Military Lodging Map
               </Typography>
@@ -83,6 +91,15 @@ const PROPERTY_TYPES = [
                 Find military lodging, RV sites, vacation rentals, and resorts.
               </Typography>
             </Box>
+
+            <IconButton
+              size="small"
+              onClick={onClose}
+              aria-label="Close search panel"
+              sx={{ mt: -0.5 }}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
           </Stack>
 
           <Divider />
