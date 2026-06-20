@@ -8,6 +8,7 @@ import Map from "./components/Map/Map";
 import SearchPanel from "./components/SearchPanel/SearchPanel";
 import WhyDialog from "./components/WhyDialog";
 import LegendDialog from "./components/LegendDialog";
+import AppHeader from "./components/AppHeader/AppHeader";
 
 const center = { lat: 39.828175, lng: -98.5795 };
 
@@ -137,6 +138,11 @@ const App = () => {
         directionsResponse={directionsResponse}
         selectedBranches={selectedBranches}
         selectedPropertyTypes={selectedPropertyTypes}
+      />
+
+      <AppHeader
+        onOpenLegend={handleOpenLegend}
+        onOpenAbout={handleOpenWhy}
       />
 
       {isSearchPanelOpen && (

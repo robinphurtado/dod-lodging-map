@@ -49,7 +49,7 @@ const PROPERTY_TYPES = [
       elevation={8}
       sx={{
         position: "absolute",
-        top: { xs: 16, md: 24 },
+        top: { xs: 72, md: 88 },
         left: { xs: 16, md: 24 },
         right: { xs: 16, md: "auto" },
 
