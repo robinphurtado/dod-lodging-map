@@ -56,7 +56,7 @@ const PROPERTY_TYPES = [
         width: { xs: "auto", sm: 390 },
         maxWidth: "calc(100vw - 32px)",
 
-        maxHeight: { xs: "70vh", md: "none" },
+        maxHeight: { xs: "50vh", md: "none" },
         overflowY: { xs: "auto", md: "visible" },
 
         borderRadius: { xs: 1, md: 1 },
