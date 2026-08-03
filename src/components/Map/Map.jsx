@@ -52,35 +52,75 @@ const mapContainerStyle = {
   height: "100%",
 };
 
-function getBranchFromProptype(proptype = "") {
-  if (proptype.includes("Navy")) return "Navy";
-  if (proptype.includes("Army") || proptype.includes("IHG Army")) return "Army";
-  if (proptype.includes("marine") || proptype.includes("corps")) return "Marines";
-  if (proptype.includes("Air Force") || proptype.includes("af resort")) {
-    return "Air Force";
-  }
-  if (proptype.includes("coast guard")) return "Coast Guard";
-
-  return "Other";
+// NEW GETBRANCH FUNCTION
+function getBranch(branch = "") {
+  if (branch === "navy") return "Navy";
+  if (branch === "army") return "Army";
+  if (branch === "marine corps") return "Marines";
+  if (branch === "coast guard") return "Coast Guard";
+  if (branch === "air force") return "Air Force";
 }
 
-function getPropertyTypeFromProptype(proptype = "") {
-  if (proptype.includes("RV")) return "RV";
-  if (proptype.includes("camp") || proptype.includes("rec")) return "Campground";
-  if (proptype.includes("VacationRental") || proptype.includes("vacation rental")) {
-    return "Vacation Rental";
-  }
-  if (proptype.includes("resort")) return "Resort";
-  if (
-    proptype.includes("Hotel") ||
-    proptype.includes("lodge") ||
-    proptype.includes("inns of the corps")
-  ) {
-    return "Hotel";
-  }
 
-  return "Other";
+// OG branch function   function getBranch(proptype = "") {
+  // if (proptype.includes("navy")) return "Navy";
+  // //thought if (property.branch === "navy") return "Navy";
+  // if (proptype.includes("army") || proptype.includes("IHG Army")) return "Army";
+  // if (proptype.includes("marine") || proptype.includes("corps")) return "Marines";
+  // if (proptype.includes("air force") || proptype.includes("af resort")) {
+  //   return "Air Force";
+  // }
+  // if (proptype.includes("coast guard")) return "Coast Guard";
+
+  // return "Other";
+// } end OG branch function 
+
+
+// OG PROPTYPE FUNCTION  RETURNS A STRING BECAUSE OLD PROPTYPE WAS ONLY ONE VALUE, NEED TO HANDLE ARRAY 
+// function getPropertyTypes(proptype = [""]) {
+
+//   if (proptype.includes("rv")) return "RV";
+
+//   //if (proptype.includes("camp") || proptype.includes("rec")) return "Tent Camping";  og, troubleshooting
+//   if (proptype.includes("camp")) return "Tent Camping";
+//   if (proptype.includes("vacationrental") || proptype.includes("vacation rental")) {
+//     return "Vacation Rental";
+//   }
+//   if (proptype.includes("resort")) return "Resort";
+//   if (
+//     proptype.includes("hotel") ||
+//     proptype.includes("lodge") ||
+//     proptype.includes("inns of the corps")
+//   ) {
+//     return "Hotel";
+//   }
+
+//   return "Other";
+
+// }  
+// OG PROPTYPE FUNCTION END
+
+function getPropertyTypes(proptypes) {
+  if (!Array.isArray(proptypes)) return [];
+
+  return proptypes.map(type => {
+    switch (type) {
+      case "hotel":
+        return "Hotel";
+      case "rv":
+        return "RV";
+      case "camp":
+        return "Tent Camping";
+      case "vacationrental":
+        return "Vacation Rental";
+      case "resort":
+        return "Resort";
+      default:
+        return type;
+    }
+  });
 }
+
 
 const Map = ({ 
   center, 
@@ -92,16 +132,30 @@ const Map = ({
   selectedPropertyTypes = [],
 }) => {
 
+console.log(properties.length);
+console.log(properties[0]);
+
   const filteredProperties = properties.filter((property) => {
-  const branch = getBranchFromProptype(property.proptype);
-  const propertyType = getPropertyTypeFromProptype(property.proptype);
+  const branch = getBranch(property.branch);
+  const propertyType = getPropertyTypes(property.proptypes);
 
   const matchesBranch =
     selectedBranches.length === 0 || selectedBranches.includes(branch);
 
-  const matchesPropertyType =
-    selectedPropertyTypes.length === 0 ||
-    selectedPropertyTypes.includes(propertyType);
+  
+  // OG MATCHESPROPERTYTYPE
+  // const matchesPropertyType =
+  //   selectedPropertyTypes.length === 0 ||
+  //   selectedPropertyTypes.includes(propertyType);
+  //   // idk what I was thinking here property.properties.includes(propertyType);
+  // END OF OG MATCHESPROPERTYTYPE
+
+const propertyTypes = getPropertyTypes(property.proptypes);
+
+const matchesPropertyType =
+  selectedPropertyTypes.length === 0 ||
+  propertyTypes.some(type => selectedPropertyTypes.includes(type));
+  
 
   return matchesBranch && matchesPropertyType;
 });
@@ -136,7 +190,7 @@ const Map = ({
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                    {selectedMarker.proptype}
+                    {getPropertyTypes(selectedMarker.proptypes).join(", ")}
                   </Typography>
 
                   <Button

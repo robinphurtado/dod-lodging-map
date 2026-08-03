@@ -39,7 +39,7 @@ const BRANCHES = ["Navy", "Army", "Marines", "Air Force", "Coast Guard"];
 const PROPERTY_TYPES = [
   "Hotel",
   "RV",
-  "Campground",
+  "Tent Camping",
   "Vacation Rental",
   "Resort",
 ];
